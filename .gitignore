@@ -1,0 +1,60 @@
+# Node.js
+**/node_modules
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+
+# Environment settings
+.env
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+*.csv
+
+# Operating System generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime*
+*.sln
+*.suo
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Build directories
+bin/
+obj/
+out/
+build/
+dist/
+tmp/
+temp/
+
+# Others
+*.tmp
+*.temp
+*.swp
+*.zip
+*.tar.gz
+*.tgz
+*.bz2
+*.log
+.cache
+.history
