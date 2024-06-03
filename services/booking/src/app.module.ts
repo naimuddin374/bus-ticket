@@ -5,7 +5,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 
 
@@ -30,7 +29,6 @@ console.log(dbConfig)
       autoLoadEntities: true, // Automatically load all entities registered through the TypeOrmModule.forFeature() method
       synchronize: true, // Ensure you turn this off in production!
     }),
-    AuthModule,
     UserModule,
   ],
   controllers: [],

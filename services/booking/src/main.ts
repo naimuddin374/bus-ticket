@@ -10,7 +10,7 @@ dotenv.config(); // This loads the environment variables from the .env file
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT || 4002; // Use the PORT from environment variables, default to 3000 if not set
+  const port = process.env.PORT || 4003; // Use the PORT from environment variables, default to 3000 if not set
 
   // Enable global validation
   app.useGlobalPipes(new ValidationPipe({
