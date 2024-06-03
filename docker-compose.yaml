@@ -3,10 +3,10 @@ version: "3.8"
 services:
   auth-service:
     build:
-      context: ./services/auth-service
+      context: ./services/auth
     container_name: auth_service
     ports:
-      - "3001:3001"
+      - "4001:4001"
     environment:
       - NODE_ENV=production
       - DB_HOST=postgres
@@ -14,12 +14,30 @@ services:
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
       - DB_DATABASE=bus-ticket
+      - PORT=4001
+    depends_on:
+      - postgres
+
+  route-service:
+    build:
+      context: ./services/route
+    container_name: route_service
+    ports:
+      - "4002:4002"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_DATABASE=bus-ticket
+      - PORT=4002
     depends_on:
       - postgres
 
   booking-service:
     build:
-      context: ./services/booking-service
+      context: ./services/booking
     container_name: booking_service
     ports:
       - "4003:4003"
@@ -30,6 +48,7 @@ services:
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
       - DB_DATABASE=bus-ticket
+      - PORT=4003
     depends_on:
       - postgres
 
@@ -51,17 +70,17 @@ services:
       timeout: 30s
       retries: 3
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    restart: on-failure
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    ports:
-      - "5050:80"
-    depends_on:
-      - postgres
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin
+  #   restart: on-failure
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@example.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #   ports:
+  #     - "5050:80"
+  #   depends_on:
+  #     - postgres
 
 volumes:
   postgres:
